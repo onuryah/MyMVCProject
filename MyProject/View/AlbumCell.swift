@@ -8,7 +8,16 @@
 import UIKit
 
 class AlbumCell: UITableViewCell {
-
+    @IBOutlet weak var firstImageView: UIImageView!
+    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var thirdImageView: UIImageView!
+    @IBOutlet weak var fourthImageView: UIImageView!
+    @IBOutlet weak var firstTitleLabelField: UILabel!
+    @IBOutlet weak var secondTitleLabelField: UILabel!
+    @IBOutlet weak var thirdTitleLabelField: UILabel!
+    @IBOutlet weak var fourthTitleLabelField: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

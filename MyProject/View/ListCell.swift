@@ -8,7 +8,8 @@
 import UIKit
 
 class ListCell: UITableViewCell {
-
+    @IBOutlet weak var albumNamesLabelField: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

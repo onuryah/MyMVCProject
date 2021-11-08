@@ -8,7 +8,8 @@
 import UIKit
 
 class PictureDetailsVC: UIViewController {
-
+    @IBOutlet weak var resultImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
