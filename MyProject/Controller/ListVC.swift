@@ -10,7 +10,7 @@ import UIKit
 class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var albumNamesTableView: UITableView!
-    var titleList = [Posts]()
+    var titleList = [String]()
     
     
     
@@ -18,8 +18,6 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         albumNamesTableView.delegate = self
         albumNamesTableView.dataSource = self
-        
-        albumNamesTableView.reloadData()
         
         getData()
         
@@ -34,7 +32,12 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }else if data != nil {
                 
                     if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String : Any]]{
-                        print("kontrol : \(json)")
+                        for data in json {
+                            if let dataToList = data["title"] as? String{
+                                self.titleList.append(dataToList)
+                            }
+                        }
+                        print(self.titleList)
                         
                         
                         DispatchQueue.main.async {
@@ -44,22 +47,26 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
             }
         }.resume()
-        
-
-        
-        
-        
     }
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return titleList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = albumNamesTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListCell
+        
+        cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
+        cell.albumNamesLabelField.numberOfLines = 0
+        
+        cell.albumNamesLabelField.text = self.titleList[indexPath.row].capitalizingFirstLetter()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }
     
 

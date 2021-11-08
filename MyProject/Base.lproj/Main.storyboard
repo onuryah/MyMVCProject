@@ -27,14 +27,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="albumsNames" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-S4-jHd">
-                                                    <rect key="frame" x="36" y="37" width="253" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="albumsNames" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-S4-jHd">
+                                                    <rect key="frame" x="36" y="19" width="358" height="80"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rDS-S4-jHd" firstAttribute="trailing" secondItem="d3T-8F-ihN" secondAttribute="trailingMargin" id="HQm-ZR-4MA"/>
+                                                <constraint firstItem="rDS-S4-jHd" firstAttribute="bottom" secondItem="d3T-8F-ihN" secondAttribute="bottomMargin" id="OLL-QQ-vw0"/>
+                                                <constraint firstItem="rDS-S4-jHd" firstAttribute="top" secondItem="d3T-8F-ihN" secondAttribute="topMargin" constant="8" id="hmZ-Pb-0bW"/>
+                                                <constraint firstItem="rDS-S4-jHd" firstAttribute="leading" secondItem="d3T-8F-ihN" secondAttribute="leadingMargin" constant="16" id="z97-z1-sYO"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="albumNamesLabelField" destination="rDS-S4-jHd" id="pPC-9P-QHL"/>
