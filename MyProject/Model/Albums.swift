@@ -11,5 +11,5 @@ struct Albums {
  
     let id : Int
     let title  : String
-    static var selectedid = Int()
+    static var selectedId = Int()
 }

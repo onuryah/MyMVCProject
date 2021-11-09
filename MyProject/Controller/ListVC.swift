@@ -39,9 +39,6 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             }
                         }
                     }
-                        
-                        
-                       
                         DispatchQueue.main.async {
                             self.albumNamesTableView.reloadData()
                         }
@@ -66,7 +63,7 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        Albums.selectedid = albumArray[indexPath.row].id
+        Albums.selectedId = albumArray[indexPath.row].id
         
         performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }

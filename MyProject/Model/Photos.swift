@@ -8,7 +8,8 @@
 import Foundation
 
 struct Photos {
+    let title : String
+    let albumId : Int
     let photoUrl : String
     let thumbnailUrl : String
-    let title : String
 }
