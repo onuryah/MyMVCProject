@@ -10,7 +10,7 @@ import UIKit
 class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var albumNamesTableView: UITableView!
-    var titleList = [String]()
+    var titleList = [Albums]()
     
     
     
@@ -18,7 +18,6 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         albumNamesTableView.delegate = self
         albumNamesTableView.dataSource = self
-        
         getData()
         
     }
@@ -34,22 +33,17 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String : Any]]{
                         for data in json {
                             if let dataToList = data["title"] as? String{
-                                self.titleList.append(dataToList)
+                                let albumsTitle = Albums(title: dataToList)
+                                self.titleList.append(albumsTitle)
                             }
                         }
-                        print(self.titleList)
-                        
-                        
                         DispatchQueue.main.async {
                             self.albumNamesTableView.reloadData()
                         }
                     }
-                
             }
         }.resume()
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titleList.count
@@ -61,14 +55,15 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
         cell.albumNamesLabelField.numberOfLines = 0
         
-        cell.albumNamesLabelField.text = self.titleList[indexPath.row].capitalizingFirstLetter()
+        cell.albumNamesLabelField.text = self.titleList[indexPath.row].title.capitalizingFirstLetter()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }
     
-
 }
 

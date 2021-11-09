@@ -6,9 +6,13 @@
 //
 
 import Foundation
-import UIKit
 
-struct Posts : Decodable {
-    let title : String
-    let pictureUrl : String
+struct Albums {
+ 
+    let title  : String
+}
+
+struct AlbumsId {
+    
+    let id : Int
 }

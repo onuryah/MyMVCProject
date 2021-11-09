@@ -7,13 +7,28 @@
 
 import UIKit
 
-class AlbumDetailsVC: UIViewController {
+class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+
+    
     @IBOutlet weak var albumDetailsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        albumDetailsTableView.delegate = self
+        albumDetailsTableView.dataSource = self
+        albumDetailsTableView.reloadData()
 
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = albumDetailsTableView.dequeueReusableCell(withIdentifier: "albumDetailsCell", for: indexPath) as! AlbumCell
+        
+        return cell
     }
     
 
