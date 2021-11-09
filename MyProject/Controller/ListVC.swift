@@ -10,7 +10,7 @@ import UIKit
 class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var albumNamesTableView: UITableView!
-    var titleList = [Albums]()
+    var albumArray = [Albums]()
     
     
     
@@ -32,11 +32,16 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
                     if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String : Any]]{
                         for data in json {
-                            if let dataToList = data["title"] as? String{
-                                let albumsTitle = Albums(title: dataToList)
-                                self.titleList.append(albumsTitle)
+                            if let titleToList = data["title"] as? String{
+                                if let idToList = data["id"] as? Int{
+                                    let albumsId = Albums(id: idToList, title: titleToList)
+                                    self.albumArray.append(albumsId)
                             }
                         }
+                    }
+                        
+                        
+                       
                         DispatchQueue.main.async {
                             self.albumNamesTableView.reloadData()
                         }
@@ -46,7 +51,7 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleList.count
+        return albumArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,12 +60,13 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
         cell.albumNamesLabelField.numberOfLines = 0
         
-        cell.albumNamesLabelField.text = self.titleList[indexPath.row].title.capitalizingFirstLetter()
+        cell.albumNamesLabelField.text = self.albumArray[indexPath.row].title.capitalizingFirstLetter()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        Albums.selectedid = albumArray[indexPath.row].id
         
         performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }

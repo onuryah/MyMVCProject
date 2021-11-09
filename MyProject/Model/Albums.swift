@@ -9,10 +9,7 @@ import Foundation
 
 struct Albums {
  
-    let title  : String
-}
-
-struct AlbumsId {
-    
     let id : Int
+    let title  : String
+    static var selectedid = Int()
 }

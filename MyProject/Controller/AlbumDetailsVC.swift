@@ -8,16 +8,15 @@
 import UIKit
 
 class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
-    
     @IBOutlet weak var albumDetailsTableView: UITableView!
+    var photoArray = [Photos]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         albumDetailsTableView.delegate = self
         albumDetailsTableView.dataSource = self
         albumDetailsTableView.reloadData()
-
+        
         
     }
     
