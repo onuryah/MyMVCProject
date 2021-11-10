@@ -56,18 +56,54 @@ class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }.resume()
     }
     
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photoArray.count
+        if photoArray.count % 4 == 0 {
+            let returning = (photoArray.count / 4)
+            return returning
+        }else {
+            let returning = (photoArray.count / 4) + 1
+            return returning
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = albumDetailsTableView.dequeueReusableCell(withIdentifier: "albumDetailsCell", for: indexPath) as! AlbumCell
         
-        let orderedRow = indexPath.row / 4
+        cell.firstTitleLabelField.lineBreakMode = .byWordWrapping
+        cell.firstTitleLabelField.numberOfLines = 0
+        
+        cell.secondTitleLabelField.lineBreakMode = .byWordWrapping
+        cell.secondTitleLabelField.numberOfLines = 0
+        
+        cell.thirdTitleLabelField.lineBreakMode = .byWordWrapping
+        cell.thirdTitleLabelField.numberOfLines = 0
+        
+        cell.fourthTitleLabelField.lineBreakMode = .byWordWrapping
+        cell.fourthTitleLabelField.numberOfLines = 0
+        
+        
+        let orderedRow = indexPath.row * 4
         cell.firstTitleLabelField.text = self.photoArray[orderedRow].title.capitalizingFirstLetter()
-        cell.secondTitleLabelField.text = self.photoArray[indexPath.row].title.capitalizingFirstLetter()
-        cell.thirdTitleLabelField.text = self.photoArray[indexPath.row].title.capitalizingFirstLetter()
-        cell.fourthTitleLabelField.text = self.photoArray[indexPath.row + 4].title.capitalizingFirstLetter()
+        
+        if photoArray.count >= orderedRow + 2 {
+            cell.secondTitleLabelField.text = self.photoArray[orderedRow + 1].title.capitalizingFirstLetter()
+        }else {
+            cell.secondTitleLabelField.text = ""
+        }
+        
+        if photoArray.count >= orderedRow + 3 {
+            cell.thirdTitleLabelField.text = self.photoArray[orderedRow + 2].title.capitalizingFirstLetter()
+        }else {
+            cell.thirdTitleLabelField.text = ""
+        }
+        
+        if photoArray.count >= orderedRow + 4 {
+            cell.fourthTitleLabelField.text = self.photoArray[orderedRow + 3].title.capitalizingFirstLetter()
+        }else {
+            cell.fourthTitleLabelField.text = ""
+        }
         
         print(indexPath.row)
         return cell
