@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var albumDetailsTableView: UITableView!
@@ -47,7 +48,6 @@ class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                             }
                         }
                     }
-                    
                     DispatchQueue.main.async{
                         self.albumDetailsTableView.reloadData()
                     }
@@ -86,26 +86,32 @@ class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let orderedRow = indexPath.row * 4
         cell.firstTitleLabelField.text = self.photoArray[orderedRow].title.capitalizingFirstLetter()
+        cell.firstImageView.sd_setImage(with: URL(string: photoArray[orderedRow].thumbnailUrl))
         
         if photoArray.count >= orderedRow + 2 {
             cell.secondTitleLabelField.text = self.photoArray[orderedRow + 1].title.capitalizingFirstLetter()
+            cell.secondImageView.sd_setImage(with: URL(string: photoArray[orderedRow + 1].thumbnailUrl))
         }else {
-            cell.secondTitleLabelField.text = ""
+            cell.secondTitleLabelField.isHidden = true
+            cell.secondImageView.isHidden = true
         }
         
         if photoArray.count >= orderedRow + 3 {
             cell.thirdTitleLabelField.text = self.photoArray[orderedRow + 2].title.capitalizingFirstLetter()
+            cell.thirdImageView.sd_setImage(with: URL(string: photoArray[orderedRow + 2].thumbnailUrl))
         }else {
-            cell.thirdTitleLabelField.text = ""
+            cell.thirdTitleLabelField.isHidden = true
+            cell.thirdImageView.isHidden = true
         }
         
         if photoArray.count >= orderedRow + 4 {
             cell.fourthTitleLabelField.text = self.photoArray[orderedRow + 3].title.capitalizingFirstLetter()
+            cell.fourthImageView.sd_setImage(with: URL(string: photoArray[orderedRow + 3].thumbnailUrl))
         }else {
-            cell.fourthTitleLabelField.text = ""
+            cell.fourthTitleLabelField.isHidden = true
+            cell.fourthImageView.isHidden = true
         }
         
-        print(indexPath.row)
         return cell
     }
     
