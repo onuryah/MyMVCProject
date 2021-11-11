@@ -8,17 +8,23 @@
 import UIKit
 import SDWebImage
 
-class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    @IBOutlet weak var albumDetailsTableView: UITableView!
+class AlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    @IBOutlet weak var albumDetailsCollectionView: UICollectionView!
+    
+    
     var photoArray = [Photos]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumDetailsTableView.delegate = self
-        albumDetailsTableView.dataSource = self
-        albumDetailsTableView.reloadData()
+        albumDetailsCollectionView.delegate = self
+        albumDetailsCollectionView.dataSource = self
+        
+        self.albumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
         
         getData()
+        
+        
     }
     
     func getData() {
@@ -40,82 +46,48 @@ class AlbumDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         if let thumbnailUrlToList = data["thumbnailUrl"] as? String{
                                             let photo = Photos(title: titleToList, albumId: albumIdToList, photoUrl: photoUrlToList, thumbnailUrl: thumbnailUrlToList)
                                             self.photoArray.append(photo)
-                            }
-                                        
-
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                     DispatchQueue.main.async{
-                        self.albumDetailsTableView.reloadData()
+                        self.albumDetailsCollectionView.reloadData()
                     }
                 }
             }
         }.resume()
     }
     
-
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if photoArray.count % 4 == 0 {
-            let returning = (photoArray.count / 4)
-            return returning
-        }else {
-            let returning = (photoArray.count / 4) + 1
-            return returning
-        }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photoArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = albumDetailsTableView.dequeueReusableCell(withIdentifier: "albumDetailsCell", for: indexPath) as! AlbumCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = albumDetailsCollectionView.dequeueReusableCell(withReuseIdentifier: "photosCell", for: indexPath) as! PhotosCell
         
-        cell.firstTitleLabelField.lineBreakMode = .byWordWrapping
-        cell.firstTitleLabelField.numberOfLines = 0
+        cell.photoNameLabelField.lineBreakMode = .byWordWrapping
+        cell.photoNameLabelField.numberOfLines = 0
         
-        cell.secondTitleLabelField.lineBreakMode = .byWordWrapping
-        cell.secondTitleLabelField.numberOfLines = 0
-        
-        cell.thirdTitleLabelField.lineBreakMode = .byWordWrapping
-        cell.thirdTitleLabelField.numberOfLines = 0
-        
-        cell.fourthTitleLabelField.lineBreakMode = .byWordWrapping
-        cell.fourthTitleLabelField.numberOfLines = 0
-        
-        
-        let orderedRow = indexPath.row * 4
-        cell.firstTitleLabelField.text = self.photoArray[orderedRow].title.capitalizingFirstLetter()
-        cell.firstImageView.sd_setImage(with: URL(string: photoArray[orderedRow].thumbnailUrl))
-        
-        if photoArray.count >= orderedRow + 2 {
-            cell.secondTitleLabelField.text = self.photoArray[orderedRow + 1].title.capitalizingFirstLetter()
-            cell.secondImageView.sd_setImage(with: URL(string: photoArray[orderedRow + 1].thumbnailUrl))
-        }else {
-            cell.secondTitleLabelField.isHidden = true
-            cell.secondImageView.isHidden = true
-        }
-        
-        if photoArray.count >= orderedRow + 3 {
-            cell.thirdTitleLabelField.text = self.photoArray[orderedRow + 2].title.capitalizingFirstLetter()
-            cell.thirdImageView.sd_setImage(with: URL(string: photoArray[orderedRow + 2].thumbnailUrl))
-        }else {
-            cell.thirdTitleLabelField.isHidden = true
-            cell.thirdImageView.isHidden = true
-        }
-        
-        if photoArray.count >= orderedRow + 4 {
-            cell.fourthTitleLabelField.text = self.photoArray[orderedRow + 3].title.capitalizingFirstLetter()
-            cell.fourthImageView.sd_setImage(with: URL(string: photoArray[orderedRow + 3].thumbnailUrl))
-        }else {
-            cell.fourthTitleLabelField.isHidden = true
-            cell.fourthImageView.isHidden = true
-        }
+        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
         
         return cell
     }
     
-
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Photos.selectedPhotoUrl = photoArray[indexPath.row].photoUrl
+        Photos.selectedPhotoname = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        
+        print("Kontrol : \(Photos.selectedPhotoUrl) ve \(Photos.selectedPhotoname)")
+        performSegue(withIdentifier: "toPictureDetailsVC", sender: nil)
+    }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
 }
