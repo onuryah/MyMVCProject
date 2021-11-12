@@ -61,12 +61,12 @@
                     <navigationItem key="navigationItem" title="Albums" id="hBP-Xa-Yj6"/>
                     <connections>
                         <outlet property="albumNamesTableView" destination="fgG-gn-us8" id="RHf-FN-WPN"/>
-                        <segue destination="oel-mD-RSD" kind="presentation" identifier="toAlbumDetailsVC" modalPresentationStyle="fullScreen" id="d6b-Jp-fSy"/>
+                        <segue destination="xRL-9G-Kx7" kind="presentation" identifier="toAlbumDetailsVC" modalPresentationStyle="fullScreen" id="Ru8-kS-Lbl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="555.07246376811599" y="57.589285714285708"/>
+            <point key="canvasLocation" x="1042" y="58"/>
         </scene>
         <!--Photos-->
         <scene sceneID="2fV-Vy-1Sc">
@@ -96,15 +96,15 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3uq-qC-bQQ">
                                                     <rect key="frame" x="0.0" y="8" width="202" height="170"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="202" id="3po-ve-rQH"/>
-                                                        <constraint firstAttribute="height" constant="170" id="teK-bS-ctF"/>
+                                                        <constraint firstAttribute="width" constant="202" id="3EY-7J-YSj"/>
+                                                        <constraint firstAttribute="height" constant="170" id="Mqu-Gz-WxC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="photosTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kna-7z-lJB">
                                                     <rect key="frame" x="0.0" y="178" width="202" height="43"/>
                                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="202" id="YmL-gk-vH0"/>
+                                                        <constraint firstAttribute="width" constant="202" id="ACB-ZK-4Kp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,13 +112,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="3uq-qC-bQQ" firstAttribute="leading" secondItem="p0R-Zz-7Lx" secondAttribute="leading" id="5fg-k1-FVZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="kna-7z-lJB" secondAttribute="bottom" id="BL6-NL-KFB"/>
-                                                <constraint firstItem="3uq-qC-bQQ" firstAttribute="centerX" secondItem="p0R-Zz-7Lx" secondAttribute="centerX" id="FVS-9p-Wso"/>
-                                                <constraint firstItem="kna-7z-lJB" firstAttribute="leading" secondItem="p0R-Zz-7Lx" secondAttribute="leading" id="aOg-oG-byp"/>
-                                                <constraint firstAttribute="trailing" secondItem="kna-7z-lJB" secondAttribute="trailing" id="k0U-CW-1mr"/>
-                                                <constraint firstItem="3uq-qC-bQQ" firstAttribute="top" secondItem="p0R-Zz-7Lx" secondAttribute="topMargin" id="ke9-iS-QVU"/>
-                                                <constraint firstItem="kna-7z-lJB" firstAttribute="top" secondItem="3uq-qC-bQQ" secondAttribute="bottom" id="lnv-uD-laX"/>
+                                                <constraint firstAttribute="trailing" secondItem="kna-7z-lJB" secondAttribute="trailing" id="7TL-zI-KY6"/>
+                                                <constraint firstItem="3uq-qC-bQQ" firstAttribute="leading" secondItem="p0R-Zz-7Lx" secondAttribute="leading" id="KSX-PJ-hXV"/>
+                                                <constraint firstItem="kna-7z-lJB" firstAttribute="top" secondItem="3uq-qC-bQQ" secondAttribute="bottom" id="M5L-Sp-MWV"/>
+                                                <constraint firstItem="3uq-qC-bQQ" firstAttribute="top" secondItem="p0R-Zz-7Lx" secondAttribute="top" constant="8" id="Qxy-TP-R22"/>
+                                                <constraint firstAttribute="trailing" secondItem="3uq-qC-bQQ" secondAttribute="trailing" id="Vgi-F5-Gyu"/>
+                                                <constraint firstAttribute="bottom" secondItem="kna-7z-lJB" secondAttribute="bottom" id="bKw-Se-hyD"/>
+                                                <constraint firstItem="kna-7z-lJB" firstAttribute="top" secondItem="3uq-qC-bQQ" secondAttribute="bottom" id="ptu-h1-kFs"/>
+                                                <constraint firstItem="kna-7z-lJB" firstAttribute="leading" secondItem="p0R-Zz-7Lx" secondAttribute="leading" id="sft-4f-Ujj"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="202" height="221"/>
@@ -129,14 +130,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-bd-L15">
+                                <rect key="frame" x="0.0" y="35" width="101" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt; Album"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="xRL-9G-Kx7" eventType="touchUpInside" id="1vR-H8-sc8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XRH-tD-vMv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="N6k-nN-wtY" firstAttribute="leading" secondItem="XRH-tD-vMv" secondAttribute="leading" id="Nny-yr-8w9"/>
-                            <constraint firstItem="N6k-nN-wtY" firstAttribute="bottom" secondItem="XRH-tD-vMv" secondAttribute="bottom" id="dyQ-qR-57q"/>
-                            <constraint firstItem="N6k-nN-wtY" firstAttribute="centerX" secondItem="zSH-jU-Xbz" secondAttribute="centerX" id="e6C-IF-wRG"/>
-                            <constraint firstItem="N6k-nN-wtY" firstAttribute="top" secondItem="zSH-jU-Xbz" secondAttribute="topMargin" constant="-14" id="rmQ-wE-I0g"/>
+                            <constraint firstItem="N6k-nN-wtY" firstAttribute="bottom" secondItem="XRH-tD-vMv" secondAttribute="bottom" id="6De-pe-07l"/>
+                            <constraint firstItem="N6k-nN-wtY" firstAttribute="top" secondItem="hZB-bd-L15" secondAttribute="bottom" constant="8" symbolic="YES" id="7kv-HN-a6y"/>
+                            <constraint firstAttribute="trailing" secondItem="N6k-nN-wtY" secondAttribute="trailing" id="KuQ-6J-t25"/>
+                            <constraint firstItem="hZB-bd-L15" firstAttribute="leading" secondItem="N6k-nN-wtY" secondAttribute="leading" id="X1N-zC-9Zv"/>
+                            <constraint firstItem="hZB-bd-L15" firstAttribute="leading" secondItem="zSH-jU-Xbz" secondAttribute="leading" id="k6A-r7-ZV0"/>
+                            <constraint firstItem="hZB-bd-L15" firstAttribute="top" secondItem="zSH-jU-Xbz" secondAttribute="topMargin" constant="-9" id="nUj-T3-8Vr"/>
+                            <constraint firstItem="XRH-tD-vMv" firstAttribute="trailing" secondItem="hZB-bd-L15" secondAttribute="trailing" constant="313" id="vYZ-1S-16V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="d4U-kE-NVS"/>
@@ -147,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kf2-Xt-QZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2634.7826086956525" y="57.589285714285708"/>
+            <point key="canvasLocation" x="2293" y="58"/>
         </scene>
         <!--Rotated Album DetailsVC-->
         <scene sceneID="cJN-0N-zBf">
@@ -316,24 +328,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0A-AA-BcG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-355.07246376811599" y="57.589285714285708"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gOL-po-Sed">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oel-mD-RSD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LgQ-0V-Qck">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xRL-9G-Kx7" kind="relationship" relationship="rootViewController" id="QNC-TV-RDK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="76A-lq-xeA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1726.0869565217392" y="57.589285714285708"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

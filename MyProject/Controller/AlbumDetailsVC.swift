@@ -24,7 +24,7 @@ class AlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         getData()
         
-        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.undo, target: self, action: #selector(addButtonClicked))
+        
         
         
     }
@@ -98,6 +98,12 @@ class AlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         print("Kontrol : \(Photos.selectedPhotoUrl) ve \(Photos.selectedPhotoname)")
         performSegue(withIdentifier: "toPictureDetailsVC", sender: nil)
     }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     
 
     
