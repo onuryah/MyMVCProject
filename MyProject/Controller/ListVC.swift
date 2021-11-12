@@ -20,7 +20,10 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         albumNamesTableView.dataSource = self
         getData()
         
+        
     }
+    
+    
     
     func getData() {
         let url = URL(string: "https://jsonplaceholder.typicode.com/albums")

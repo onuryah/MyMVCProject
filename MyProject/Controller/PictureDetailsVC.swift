@@ -15,7 +15,9 @@ class PictureDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         showItems()
+       
 
         
     }
@@ -25,9 +27,15 @@ class PictureDetailsVC: UIViewController {
         resultNameLabel.lineBreakMode = .byWordWrapping
         resultNameLabel.numberOfLines = 0
         
+        resultImageView.layer.cornerRadius = 50
+
+        
         resultImageView.sd_setImage(with: URL(string: Photos.selectedPhotoUrl))
         resultNameLabel.text = Photos.selectedPhotoname
         
     }
-
+    @IBAction func backButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "toRotatedAlbumDetailsVC", sender: nil)
+    }
+    
 }

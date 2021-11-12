@@ -1,37 +1,28 @@
 //
-//  AlbumDetailsVC.swift
+//  ReturnedAlbumDetailsVC.swift
 //  MyProject
 //
-//  Created by Ceren Çapar on 8.11.2021.
+//  Created by Ceren Çapar on 12.11.2021.
 //
 
 import UIKit
 import SDWebImage
 
-class AlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    @IBOutlet weak var albumDetailsCollectionView: UICollectionView!
-    
-    
+class RotatedAlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var rotatedAlbumDetailsCollectionView: UICollectionView!
     var photoArray = [Photos]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumDetailsCollectionView.delegate = self
-        albumDetailsCollectionView.dataSource = self
+
+        rotatedAlbumDetailsCollectionView.delegate = self
+        rotatedAlbumDetailsCollectionView.dataSource = self
         
-        self.albumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
+        self.rotatedAlbumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
         
         getData()
-        
-        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.undo, target: self, action: #selector(addButtonClicked))
-        
-        
     }
     
-    @objc func addButtonClicked() {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     func getData() {
         let url = URL(string: "https://jsonplaceholder.typicode.com/photos")
@@ -59,47 +50,49 @@ class AlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                         }
                     }
                     DispatchQueue.main.async{
-                        self.albumDetailsCollectionView.reloadData()
+                        self.rotatedAlbumDetailsCollectionView.reloadData()
                     }
                 }
             }
         }.resume()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoArray.count
     }
     
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 134, height: 174)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = albumDetailsCollectionView.dequeueReusableCell(withReuseIdentifier: "photosCell", for: indexPath) as! PhotosCell
+        let cell = rotatedAlbumDetailsCollectionView.dequeueReusableCell(withReuseIdentifier: "rotatedPhotosCell", for: indexPath) as! RotatedPhotosCell
         
+        cell.rotatedPhotoNameLabelField.lineBreakMode = .byWordWrapping
+        cell.rotatedPhotoNameLabelField.numberOfLines = 0
         
-        cell.photoNameLabelField.lineBreakMode = .byWordWrapping
-        cell.photoNameLabelField.numberOfLines = 0
+       
         
-        
-        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
-        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
+        cell.rotatedPhotoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        cell.rotatedPhotosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
         
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         Photos.selectedPhotoUrl = photoArray[indexPath.row].photoUrl
         Photos.selectedPhotoname = photoArray[indexPath.row].title.capitalizingFirstLetter()
         
         print("Kontrol : \(Photos.selectedPhotoUrl) ve \(Photos.selectedPhotoname)")
-        performSegue(withIdentifier: "toPictureDetailsVC", sender: nil)
+        performSegue(withIdentifier: "fromRotatedAlbumDetailsVCToPictureDetailsVC", sender: nil)
     }
     
-
     
+    
+    
+    
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "fromRotatedAlbumDetailsVCToListVC", sender: nil)
+    }
 
 }
