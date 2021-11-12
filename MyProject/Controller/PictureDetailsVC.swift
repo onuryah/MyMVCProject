@@ -16,17 +16,20 @@ class PictureDetailsVC: UIViewController {
         super.viewDidLoad()
         
         
+//        Call to func to set imageView and labelField as requested.
         showItems()
        
-
-        
     }
     
+//    Sets objects from noted information.
     func showItems() {
         
+        
+//        Gives to the label dynamic property.
         resultNameLabel.lineBreakMode = .byWordWrapping
         resultNameLabel.numberOfLines = 0
         
+//        Gives corners radius.
         resultImageView.layer.cornerRadius = 50
 
         
@@ -34,6 +37,8 @@ class PictureDetailsVC: UIViewController {
         resultNameLabel.text = Photos.selectedPhotoname
         
     }
+    
+//    To move back and change to columns numbers.
     @IBAction func backButtonClicked(_ sender: Any) {
         performSegue(withIdentifier: "toRotatedAlbumDetailsVC", sender: nil)
     }

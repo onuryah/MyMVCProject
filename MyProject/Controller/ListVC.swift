@@ -16,21 +16,28 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        Setting delegates
         albumNamesTableView.delegate = self
         albumNamesTableView.dataSource = self
+        
+//        Calling func to get data
         getData()
         
         
     }
     
     
-    
+//    This func gets albums id and title from given url.
     func getData() {
         let url = URL(string: "https://jsonplaceholder.typicode.com/albums")
         
         URLSession.shared.dataTask(with: url!) { data, response, error in
             if error != nil {
-                print("Error")
+                let alert = UIAlertController(title: "ERROR", message: "Error!", preferredStyle: UIAlertController.Style.alert)
+                let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
             }else if data != nil {
                 
                     if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String : Any]]{
@@ -50,13 +57,18 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }.resume()
     }
     
+    
+//    To determine total rows number
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albumArray.count
     }
     
+    
+//    Connected to ListCell and wrote desire datas to labelField.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = albumNamesTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListCell
         
+//        Gives to the label dynamic property.
         cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
         cell.albumNamesLabelField.numberOfLines = 0
         
@@ -64,12 +76,16 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
+//    Got information clicked row and wrote to static object to handle it in AlbumDetailsVC.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         Albums.selectedId = albumArray[indexPath.row].id
         
+//        To go AlbumDetailsVC.
         performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }
+    
     
 }
 
