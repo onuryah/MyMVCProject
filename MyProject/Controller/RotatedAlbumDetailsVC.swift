@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class RotatedAlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class RotatedAlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var rotatedAlbumDetailsCollectionView: UICollectionView!
     var photoArray = [Photos]()
     
@@ -71,10 +71,6 @@ class RotatedAlbumDetailsVC: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     
-//    This func gives layout to items.
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 134, height: 174)
-    }
     
 //    Connected to PhotosCell and wrote desire datas to labelField and ImageView.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

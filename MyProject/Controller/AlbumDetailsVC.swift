@@ -12,7 +12,6 @@ class AlbumDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var albumDetailsCollectionView: UICollectionView!
     
-    
     var photoArray = [Photos]()
     
     override func viewDidLoad() {
