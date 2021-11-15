@@ -161,92 +161,6 @@
             </objects>
             <point key="canvasLocation" x="2293" y="58"/>
         </scene>
-        <!--Rotated Album DetailsVC-->
-        <scene sceneID="cJN-0N-zBf">
-            <objects>
-                <viewController id="i8m-rT-Xwd" customClass="RotatedAlbumDetailsVC" customModule="MyProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H93-5s-jT0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AwC-M1-e7l">
-                                <rect key="frame" x="0.0" y="74" width="414" height="788"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="6" minimumInteritemSpacing="6" id="YMm-QP-6D3">
-                                    <size key="itemSize" width="134" height="174"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="rotatedPhotosCell" id="rrp-Cj-dCp" customClass="RotatedPhotosCell" customModule="MyProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="134" height="174"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JBx-Jd-TLp">
-                                            <rect key="frame" x="0.0" y="0.0" width="134" height="174"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wf-bs-Xkq">
-                                                    <rect key="frame" x="0.0" y="117" width="134" height="57"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="113" id="Ufu-mr-MZz"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u23-zI-QeB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="134" height="117"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="113" id="4Ak-Pa-QER"/>
-                                                        <constraint firstAttribute="height" constant="117" id="cqn-1d-rAi"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="2Wf-bs-Xkq" firstAttribute="top" secondItem="u23-zI-QeB" secondAttribute="bottom" id="2Bh-iH-fiX"/>
-                                                <constraint firstAttribute="bottom" secondItem="2Wf-bs-Xkq" secondAttribute="bottom" id="2Z1-Pm-E46"/>
-                                                <constraint firstAttribute="trailing" secondItem="u23-zI-QeB" secondAttribute="trailing" id="YXX-Gp-ztD"/>
-                                                <constraint firstItem="u23-zI-QeB" firstAttribute="top" secondItem="JBx-Jd-TLp" secondAttribute="top" id="c6l-qc-HDS"/>
-                                                <constraint firstAttribute="trailing" secondItem="2Wf-bs-Xkq" secondAttribute="trailing" id="oae-pa-vHR"/>
-                                                <constraint firstItem="u23-zI-QeB" firstAttribute="leading" secondItem="JBx-Jd-TLp" secondAttribute="leading" id="wAo-k7-hUW"/>
-                                                <constraint firstItem="2Wf-bs-Xkq" firstAttribute="leading" secondItem="JBx-Jd-TLp" secondAttribute="leading" id="yjJ-k0-r3c"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="134" height="174"/>
-                                        <connections>
-                                            <outlet property="rotatedPhotoNameLabelField" destination="2Wf-bs-Xkq" id="p9Z-AD-PLE"/>
-                                            <outlet property="rotatedPhotosImageView" destination="u23-zI-QeB" id="lDI-xu-qNh"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Du-HX-GGH">
-                                <rect key="frame" x="0.0" y="35" width="101" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="&lt; Albums"/>
-                                <connections>
-                                    <action selector="backButtonClicked:" destination="i8m-rT-Xwd" eventType="touchUpInside" id="5cU-ao-UxF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8zy-Yd-ZE3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="FxQ-Ob-amu"/>
-                    <connections>
-                        <outlet property="rotatedAlbumDetailsCollectionView" destination="AwC-M1-e7l" id="bs5-iC-bky"/>
-                        <segue destination="PaH-cp-hoj" kind="presentation" identifier="fromRotatedAlbumDetailsVCToListVC" modalPresentationStyle="fullScreen" id="IUj-TD-8Nl"/>
-                        <segue destination="ELo-Z0-97F" kind="presentation" identifier="fromRotatedAlbumDetailsVCToPictureDetailsVC" modalPresentationStyle="fullScreen" id="o2Z-rO-c6q"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="82L-LE-uxT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="940.57971014492762" y="862.5"/>
-        </scene>
         <!--Picture DetailsVC-->
         <scene sceneID="Rfd-5R-U2x">
             <objects>
@@ -304,7 +218,6 @@
                     <connections>
                         <outlet property="resultImageView" destination="bc1-ka-KcE" id="hhR-0b-M3K"/>
                         <outlet property="resultNameLabel" destination="G6N-jF-0cT" id="dc0-zn-4eC"/>
-                        <segue destination="i8m-rT-Xwd" kind="presentation" identifier="toRotatedAlbumDetailsVC" modalPresentationStyle="fullScreen" id="FRR-pX-y2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaT-ob-zQp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -330,9 +243,6 @@
             <point key="canvasLocation" x="-355.07246376811599" y="57.589285714285708"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="XmO-rg-NTy"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

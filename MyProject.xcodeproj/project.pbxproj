@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A545985273E82E7000B4F41 /* RotatedAlbumDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A545984273E82E7000B4F41 /* RotatedAlbumDetailsVC.swift */; };
+		4A10699227427554007D5541 /* AlbumUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699127427554007D5541 /* AlbumUrl.swift */; };
+		4A10699427427566007D5541 /* PhotoUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699327427566007D5541 /* PhotoUrl.swift */; };
+		4A10699727427E42007D5541 /* FetchDataForAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699627427E42007D5541 /* FetchDataForAlbum.swift */; };
+		4A10699927427E5F007D5541 /* FetchDataForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699827427E5F007D5541 /* FetchDataForPhoto.swift */; };
 		4A545987273E8362000B4F41 /* RotatedPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A545986273E8362000B4F41 /* RotatedPhotosCell.swift */; };
 		4A65B8272739D05300C8EABA /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65B8262739D05300C8EABA /* ExtensionString.swift */; };
 		4A78496727394D800017ACBF /* AlbumDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78496627394D800017ACBF /* AlbumDetailsVC.swift */; };
@@ -28,7 +31,10 @@
 
 /* Begin PBXFileReference section */
 		10A0277157EDF0465DF674E9 /* Pods-MyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyProject.release.xcconfig"; path = "Target Support Files/Pods-MyProject/Pods-MyProject.release.xcconfig"; sourceTree = "<group>"; };
-		4A545984273E82E7000B4F41 /* RotatedAlbumDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatedAlbumDetailsVC.swift; sourceTree = "<group>"; };
+		4A10699127427554007D5541 /* AlbumUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUrl.swift; sourceTree = "<group>"; };
+		4A10699327427566007D5541 /* PhotoUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrl.swift; sourceTree = "<group>"; };
+		4A10699627427E42007D5541 /* FetchDataForAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataForAlbum.swift; sourceTree = "<group>"; };
+		4A10699827427E5F007D5541 /* FetchDataForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataForPhoto.swift; sourceTree = "<group>"; };
 		4A545986273E8362000B4F41 /* RotatedPhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatedPhotosCell.swift; sourceTree = "<group>"; };
 		4A65B8262739D05300C8EABA /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		4A78496627394D800017ACBF /* AlbumDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsVC.swift; sourceTree = "<group>"; };
@@ -79,6 +85,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4A10698E27427450007D5541 /* DataClass */ = {
+			isa = PBXGroup;
+			children = (
+				4A65B8262739D05300C8EABA /* ExtensionString.swift */,
+				4A78496E273957100017ACBF /* Albums.swift */,
+				4AB17ECC273AB2BF007E6F9F /* Photos.swift */,
+			);
+			path = DataClass;
+			sourceTree = "<group>";
+		};
+		4A1069902742752C007D5541 /* UrlClass */ = {
+			isa = PBXGroup;
+			children = (
+				4A10699327427566007D5541 /* PhotoUrl.swift */,
+				4A10699127427554007D5541 /* AlbumUrl.swift */,
+			);
+			path = UrlClass;
+			sourceTree = "<group>";
+		};
+		4A10699527427DF8007D5541 /* FetchingData */ = {
+			isa = PBXGroup;
+			children = (
+				4A10699827427E5F007D5541 /* FetchDataForPhoto.swift */,
+				4A10699627427E42007D5541 /* FetchDataForAlbum.swift */,
+			);
+			path = FetchingData;
+			sourceTree = "<group>";
+		};
 		4A78495C27393B160017ACBF /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,9 +125,9 @@
 		4A78495D27393B200017ACBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A65B8262739D05300C8EABA /* ExtensionString.swift */,
-				4AB17ECC273AB2BF007E6F9F /* Photos.swift */,
-				4A78496E273957100017ACBF /* Albums.swift */,
+				4A10699527427DF8007D5541 /* FetchingData */,
+				4A1069902742752C007D5541 /* UrlClass */,
+				4A10698E27427450007D5541 /* DataClass */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -111,7 +145,6 @@
 		4A78496027393B390017ACBF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4A545984273E82E7000B4F41 /* RotatedAlbumDetailsVC.swift */,
 				4A78496827394D9C0017ACBF /* PictureDetailsVC.swift */,
 				4A78496627394D800017ACBF /* AlbumDetailsVC.swift */,
 				4AE560412737439C000F04D2 /* ListVC.swift */,
@@ -268,18 +301,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A545985273E82E7000B4F41 /* RotatedAlbumDetailsVC.swift in Sources */,
 				4A545987273E8362000B4F41 /* RotatedPhotosCell.swift in Sources */,
 				4AE560422737439C000F04D2 /* ListVC.swift in Sources */,
+				4A10699227427554007D5541 /* AlbumUrl.swift in Sources */,
 				4A78496727394D800017ACBF /* AlbumDetailsVC.swift in Sources */,
 				4A78496927394D9C0017ACBF /* PictureDetailsVC.swift in Sources */,
+				4A10699927427E5F007D5541 /* FetchDataForPhoto.swift in Sources */,
 				4AB17ECD273AB2BF007E6F9F /* Photos.swift in Sources */,
+				4A10699427427566007D5541 /* PhotoUrl.swift in Sources */,
 				4AE5603E2737439C000F04D2 /* AppDelegate.swift in Sources */,
 				4AC434F7273D302300EE4B92 /* ListCell.swift in Sources */,
 				4AC434FB273D30B100EE4B92 /* PhotosCell.swift in Sources */,
 				4AE560402737439C000F04D2 /* SceneDelegate.swift in Sources */,
 				4A65B8272739D05300C8EABA /* ExtensionString.swift in Sources */,
 				4A78496F273957100017ACBF /* Albums.swift in Sources */,
+				4A10699727427E42007D5541 /* FetchDataForAlbum.swift in Sources */,
 				4AE56052273743E6000F04D2 /* SourcesClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
