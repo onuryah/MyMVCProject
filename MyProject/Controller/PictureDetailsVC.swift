@@ -17,7 +17,6 @@ class PictureDetailsVC: UIViewController {
         showItems()
     }
     func showItems() {
-        
         resultNameLabel.lineBreakMode = .byWordWrapping
         resultNameLabel.numberOfLines = 0
         resultImageView.layer.cornerRadius = 50

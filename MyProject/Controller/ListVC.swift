@@ -38,20 +38,20 @@ class ListVC: UIViewController{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = albumNamesTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListCell
-        
-        cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
-        cell.albumNamesLabelField.numberOfLines = 0
-        
-        cell.albumNamesLabelField.text = albumArray[indexPath.row].title.capitalizingFirstLetter()
+        shortCut(cell: cell, indexPath: indexPath)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Albums.selectedId = albumArray[indexPath.row].id
-        
         performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }
 }
 extension ListVC: UITableViewDelegate, UITableViewDataSource{
+    func shortCut(cell: ListCell, indexPath: IndexPath){
+        cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
+        cell.albumNamesLabelField.numberOfLines = 0
+        cell.albumNamesLabelField.text = albumArray[indexPath.row].title.capitalizingFirstLetter()
+    }
 }
 

@@ -10,5 +10,4 @@ import UIKit
 class RotatedPhotosCell: UICollectionViewCell {
     @IBOutlet weak var rotatedPhotosImageView: UIImageView!
     @IBOutlet weak var rotatedPhotoNameLabelField: UILabel!
-    
 }

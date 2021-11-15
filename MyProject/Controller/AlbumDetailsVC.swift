@@ -35,8 +35,6 @@ class AlbumDetailsVC: UIViewController{
         self.albumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoArray.count
     }
@@ -47,14 +45,7 @@ class AlbumDetailsVC: UIViewController{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = albumDetailsCollectionView.dequeueReusableCell(withReuseIdentifier: "photosCell", for: indexPath) as! PhotosCell
-        
-        cell.photoNameLabelField.lineBreakMode = .byWordWrapping
-        cell.photoNameLabelField.numberOfLines = 0
-        
-        
-        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
-        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
-        
+        shortCut(cell: cell, indexPath: indexPath)
         return cell
     }
     
@@ -70,4 +61,11 @@ class AlbumDetailsVC: UIViewController{
     }
 }
 extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource{
+    func shortCut(cell: PhotosCell, indexPath: IndexPath) {
+        cell.photoNameLabelField.lineBreakMode = .byWordWrapping
+        cell.photoNameLabelField.numberOfLines = 0
+        
+        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
+    }
 }
