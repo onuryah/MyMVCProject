@@ -16,7 +16,7 @@ class PictureDetailsVC: UIViewController {
         super.viewDidLoad()
         showItems()
     }
-    func showItems() {
+    fileprivate func showItems() {
         resultNameLabel.lineBreakMode = .byWordWrapping
         resultNameLabel.numberOfLines = 0
         resultImageView.layer.cornerRadius = 50
@@ -24,7 +24,7 @@ class PictureDetailsVC: UIViewController {
         resultImageView.sd_setImage(with: URL(string: Photos.selectedPhotoUrl))
         resultNameLabel.text = Photos.selectedPhotoname
     }
-    @IBAction func backButtonClicked(_ sender: Any) {
+    @IBAction private func backButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 }

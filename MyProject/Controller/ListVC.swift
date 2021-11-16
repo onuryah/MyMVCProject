@@ -16,6 +16,12 @@ class ListVC: UIViewController{
         super.viewDidLoad()
         fetchData()
         setTableViewDelegates()
+        registerCellToTableView()
+    }
+    
+    fileprivate func registerCellToTableView(){
+        let cellNib = UINib(nibName: "ListCell", bundle: nil)
+        albumNamesTableView.register(cellNib, forCellReuseIdentifier: "listCell")
     }
     
     fileprivate func fetchData(){

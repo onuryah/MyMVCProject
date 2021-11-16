@@ -13,11 +13,16 @@ class AlbumDetailsVC: UIViewController{
     @IBOutlet private weak var albumDetailsCollectionView: UICollectionView!
     private var photoArray = [Photos]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
         fetchPhotoDatas()
+        registerCellToCollectionView()
+    }
+    
+    fileprivate func registerCellToCollectionView() {
+        let cellNib = UINib(nibName: "PhotosCell", bundle: nil)
+        albumDetailsCollectionView.register(cellNib, forCellWithReuseIdentifier: "photosCell")
     }
     
     fileprivate func fetchPhotoDatas() {
@@ -61,10 +66,9 @@ class AlbumDetailsVC: UIViewController{
     }
 }
 extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource{
-    func shortCut(cell: PhotosCell, indexPath: IndexPath) {
+    fileprivate func shortCut(cell: PhotosCell, indexPath: IndexPath) {
         cell.photoNameLabelField.lineBreakMode = .byWordWrapping
         cell.photoNameLabelField.numberOfLines = 0
-        
         cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
         cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
     }

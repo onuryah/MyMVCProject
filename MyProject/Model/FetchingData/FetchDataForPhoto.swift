@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class FetchPhoto{
     private var photoArray = [Photos]()
@@ -14,7 +15,10 @@ class FetchPhoto{
         URLSession.shared.dataTask(with: PhotoUrl().photourl!) { data, response, error in
             DispatchQueue.main.async {
             if error != nil {
-                print("error")
+                let alert = UIAlertController(title: "ERROR", message: "Error!", preferredStyle: UIAlertController.Style.alert)
+                let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                alert.addAction(okButton)
+                AlbumDetailsVC().present(alert, animated: true, completion: nil)
                 completion(nil)
             }else if data != nil {
                 if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String : Any]]{
