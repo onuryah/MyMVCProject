@@ -13,11 +13,25 @@ class AlbumDetailsVC: UIViewController{
     @IBOutlet private weak var albumDetailsCollectionView: UICollectionView!
     private var photoArray = [Photos]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
         fetchPhotoDatas()
         registerCellToCollectionView()
+        layoutForCell()
+        
+      
+    }
+    
+    fileprivate func layoutForCell() {
+        let layout = UICollectionViewFlowLayout()
+        let width = (UIScreen.main.bounds.size.width - 16) / 2
+        layout.estimatedItemSize = CGSize(width: width, height: 200)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        albumDetailsCollectionView.setCollectionViewLayout(layout, animated: true)
     }
     
     fileprivate func registerCellToCollectionView() {
@@ -33,6 +47,7 @@ class AlbumDetailsVC: UIViewController{
             self.albumDetailsCollectionView.reloadData()
         }
     }
+    
     
     fileprivate func setCollectionView() {
         albumDetailsCollectionView.delegate = self
@@ -65,7 +80,7 @@ class AlbumDetailsVC: UIViewController{
         self.dismiss(animated: true, completion: nil)
     }
 }
-extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource{
+extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     fileprivate func shortCut(cell: PhotosCell, indexPath: IndexPath) {
         cell.photoNameLabelField.lineBreakMode = .byWordWrapping
         cell.photoNameLabelField.numberOfLines = 0

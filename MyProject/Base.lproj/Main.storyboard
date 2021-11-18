@@ -51,7 +51,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N6k-nN-wtY">
                                 <rect key="frame" x="0.0" y="74" width="414" height="788"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uZE-PK-j8g">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uZE-PK-j8g">
                                     <size key="itemSize" width="202" height="221"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -60,7 +60,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-bd-L15">
-                                <rect key="frame" x="0.0" y="35" width="101" height="31"/>
+                                <rect key="frame" x="0.0" y="35" width="130" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="&lt; Album"/>
                                 <connections>
@@ -77,7 +77,7 @@
                             <constraint firstItem="hZB-bd-L15" firstAttribute="leading" secondItem="N6k-nN-wtY" secondAttribute="leading" id="X1N-zC-9Zv"/>
                             <constraint firstItem="hZB-bd-L15" firstAttribute="leading" secondItem="zSH-jU-Xbz" secondAttribute="leading" id="k6A-r7-ZV0"/>
                             <constraint firstItem="hZB-bd-L15" firstAttribute="top" secondItem="zSH-jU-Xbz" secondAttribute="topMargin" constant="-9" id="nUj-T3-8Vr"/>
-                            <constraint firstItem="XRH-tD-vMv" firstAttribute="trailing" secondItem="hZB-bd-L15" secondAttribute="trailing" constant="313" id="vYZ-1S-16V"/>
+                            <constraint firstItem="XRH-tD-vMv" firstAttribute="trailing" secondItem="hZB-bd-L15" secondAttribute="trailing" constant="284" id="vYZ-1S-16V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="d4U-kE-NVS"/>
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kf2-Xt-QZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="58"/>
+            <point key="canvasLocation" x="2292.753623188406" y="57.589285714285708"/>
         </scene>
         <!--Picture DetailsVC-->
         <scene sceneID="Rfd-5R-U2x">
@@ -116,10 +116,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Eh-Fn-dyG">
-                                <rect key="frame" x="0.0" y="35" width="101" height="31"/>
+                                <rect key="frame" x="0.0" y="35" width="130" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="I1p-Id-BL8"/>
-                                    <constraint firstAttribute="width" constant="101" id="PWv-eT-rUK"/>
+                                    <constraint firstAttribute="width" constant="130" id="PWv-eT-rUK"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="&lt; Photos"/>
