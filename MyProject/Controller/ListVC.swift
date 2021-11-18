@@ -19,11 +19,6 @@ class ListVC: UIViewController{
         registerCellToTableView()
     }
     
-    fileprivate func registerCellToTableView(){
-        let cellNib = UINib(nibName: "ListCell", bundle: nil)
-        albumNamesTableView.register(cellNib, forCellReuseIdentifier: "listCell")
-    }
-    
     fileprivate func fetchData(){
         FetchAlbum().getData { album in
             if album != nil {
@@ -33,18 +28,13 @@ class ListVC: UIViewController{
         }
     }
     
-    fileprivate func setTableViewDelegates() {
-        albumNamesTableView.delegate = self
-        albumNamesTableView.dataSource = self
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albumArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = albumNamesTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListCell
-        shortCut(cell: cell, indexPath: indexPath)
+        cell.albumNamesLabelField.text = albumArray[indexPath.row].title.capitalizingFirstLetter()
         return cell
     }
     
@@ -54,10 +44,13 @@ class ListVC: UIViewController{
     }
 }
 extension ListVC: UITableViewDelegate, UITableViewDataSource{
-    func shortCut(cell: ListCell, indexPath: IndexPath){
-        cell.albumNamesLabelField.lineBreakMode = .byWordWrapping
-        cell.albumNamesLabelField.numberOfLines = 0
-        cell.albumNamesLabelField.text = albumArray[indexPath.row].title.capitalizingFirstLetter()
+    fileprivate func setTableViewDelegates() {
+        albumNamesTableView.delegate = self
+        albumNamesTableView.dataSource = self
+    }
+    fileprivate func registerCellToTableView(){
+        let cellNib = UINib(nibName: "ListCell", bundle: nil)
+        albumNamesTableView.register(cellNib, forCellReuseIdentifier: "listCell")
     }
 }
 

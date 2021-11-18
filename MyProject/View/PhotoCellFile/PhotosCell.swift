@@ -16,9 +16,16 @@ class PhotosCell: UICollectionViewCell {
         layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
         return layoutAttributes
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        autoSizeLabelField()
     }
 
+}
+extension PhotosCell{
+    fileprivate func autoSizeLabelField() {
+        photoNameLabelField.lineBreakMode = .byWordWrapping
+        photoNameLabelField.numberOfLines = 0
+    }
 }

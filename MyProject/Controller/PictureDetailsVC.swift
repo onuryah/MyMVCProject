@@ -14,17 +14,21 @@ class PictureDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showItems()
+        backButtonAdded()
+        fixImageViewAndLabelField()
     }
-    fileprivate func showItems() {
+    
+    fileprivate func backButtonAdded() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Photos", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
+    }
+    @objc func goBack(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    func fixImageViewAndLabelField() {
         resultNameLabel.lineBreakMode = .byWordWrapping
         resultNameLabel.numberOfLines = 0
         resultImageView.layer.cornerRadius = 50
-
         resultImageView.sd_setImage(with: URL(string: Photos.selectedPhotoUrl))
         resultNameLabel.text = Photos.selectedPhotoname
-    }
-    @IBAction private func backButtonClicked(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
 }
