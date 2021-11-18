@@ -31,19 +31,13 @@ class AlbumDetailsVC: UIViewController{
         }
     }
     
-    fileprivate func setCollectionView() {
-        albumDetailsCollectionView.delegate = self
-        albumDetailsCollectionView.dataSource = self
-        self.albumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = albumDetailsCollectionView.dequeueReusableCell(withReuseIdentifier: "photosCell", for: indexPath) as! PhotosCell
-        shortCut(cell: cell, indexPath: indexPath)
+        itemsInCell(cell: cell, indexPath: indexPath)
         return cell
     }
     
@@ -54,7 +48,7 @@ class AlbumDetailsVC: UIViewController{
 }
 
 extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    fileprivate func shortCut(cell: PhotosCell, indexPath: IndexPath) {
+    fileprivate func itemsInCell(cell: PhotosCell, indexPath: IndexPath) {
         cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
         cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
     }
@@ -85,5 +79,11 @@ extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     fileprivate func registerCellToCollectionView() {
         let cellNib = UINib(nibName: "PhotosCell", bundle: nil)
         albumDetailsCollectionView.register(cellNib, forCellWithReuseIdentifier: "photosCell")
+    }
+    
+    fileprivate func setCollectionView() {
+        albumDetailsCollectionView.delegate = self
+        albumDetailsCollectionView.dataSource = self
+        self.albumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
     }
 }
