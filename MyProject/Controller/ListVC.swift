@@ -23,6 +23,8 @@ class ListVC: UIViewController{
         FetchAlbum().getData { album in
             if album != nil {
                 self.albumArray = album!
+            }else{
+                self.makeAlert()
             }
             self.albumNamesTableView.reloadData()
         }
@@ -51,6 +53,13 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource{
     fileprivate func registerCellToTableView(){
         let cellNib = UINib(nibName: "ListCell", bundle: nil)
         albumNamesTableView.register(cellNib, forCellReuseIdentifier: "listCell")
+    }
+    
+    func makeAlert(){
+        let alert = UIAlertController(title: "ERROR", message: "Error!", preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

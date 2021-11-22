@@ -26,6 +26,8 @@ class AlbumDetailsVC: UIViewController{
         FetchPhoto().getData { photos in
             if photos != nil {
                 self.photoArray = photos!
+            }else {
+                self.makeAlert()
             }
             self.albumDetailsCollectionView.reloadData()
         }
@@ -85,5 +87,12 @@ extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         albumDetailsCollectionView.delegate = self
         albumDetailsCollectionView.dataSource = self
         self.albumDetailsCollectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+    }
+    
+    func makeAlert(){
+        let alert = UIAlertController(title: "ERROR", message: "Error!", preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
 }
