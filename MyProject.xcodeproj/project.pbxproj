@@ -165,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				4A4FCBD6274405A600117705 /* PhotoCellFile */,
-				4A4FCBD7274405AB00117705 /* ListCellFile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,8 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				4A78496827394D9C0017ACBF /* PictureDetailsVC.swift */,
-				4A78496627394D800017ACBF /* AlbumDetailsVC.swift */,
 				4AE560412737439C000F04D2 /* ListVC.swift */,
+				4A78496627394D800017ACBF /* AlbumDetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,6 +205,7 @@
 				4A78496027393B390017ACBF /* Controller */,
 				4A78495F27393B2F0017ACBF /* View */,
 				4AE560432737439C000F04D2 /* Main.storyboard */,
+				4A4FCBD7274405AB00117705 /* ListCellFile */,
 				4AE560462737439E000F04D2 /* Assets.xcassets */,
 				4AE560482737439E000F04D2 /* LaunchScreen.storyboard */,
 				4AE56051273743E6000F04D2 /* SourcesClass.swift */,
