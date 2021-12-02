@@ -33,3 +33,39 @@ class FetchAlbum {
         }.resume()
     }
 }
+final class NetworkManager: NSObject {
+    
+    enum failEnum: Error {
+        case serilizationError
+    }
+    
+    enum HttpMethods: String {
+        case POST
+        case GET
+    }
+    
+    static func fetchRequest<T>(url: String, method: HttpMethods ,model: T, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionTask where T: Codable {
+        let stornUrl = URL(string: url)!
+        var request = URLRequest(url: stornUrl)
+        request.timeoutInterval = 300
+        request.httpMethod = method.rawValue
+        let task =  URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    let result = try decoder.decode(T.self, from: data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(failEnum.serilizationError))
+                }
+              
+            }
+        }
+        task.resume()
+        return task
+    }
+    
+}
