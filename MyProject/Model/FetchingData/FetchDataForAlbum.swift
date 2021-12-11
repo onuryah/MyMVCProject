@@ -12,7 +12,8 @@ class FetchAlbum {
     private var albumArray = [Albums]()
     
     public func getData(completion : @escaping([Albums]?) -> ()) {
-        URLSession.shared.dataTask(with: AlbumUrl().albumUrl!) { data, response, error in
+        guard let url = URL(string: URLClass.albums)else{return}
+        URLSession.shared.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
                 if error != nil {
                     completion(nil)

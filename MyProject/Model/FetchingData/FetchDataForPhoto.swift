@@ -12,7 +12,8 @@ class FetchPhoto{
     private var photoArray = [Photos]()
     
     public func getData(completion : @escaping([Photos]?) -> ()) {
-        URLSession.shared.dataTask(with: PhotoUrl().photourl!) { data, response, error in
+        guard let url = URL(string: URLClass.photos) else {return}
+        URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
             if error != nil {
                 completion(nil)
