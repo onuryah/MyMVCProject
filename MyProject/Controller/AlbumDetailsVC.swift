@@ -11,25 +11,38 @@ import SDWebImage
 class AlbumDetailsVC: UIViewController{
     
     @IBOutlet private weak var albumDetailsCollectionView: UICollectionView!
-    private var photoArray = [Photos]()
+    private var photoArray = [Photo]()
+    var selectedId : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backButtonAdded()
         setCollectionView()
-        fetchPhotoDatas()
+        fetch()
         registerCellToCollectionView()
         layoutForCell()
     }
+}
+
+extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    fileprivate func itemsInCell(cell: PhotosCell, indexPath: IndexPath) {
+        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailURL))
+    }
     
-    fileprivate func fetchPhotoDatas() {
-        FetchPhoto().getData { photos in
-            if photos != nil {
-                self.photoArray = photos!
-            }else {
-                self.makeAlert()
+    func fetch(){
+        NetworkManager.fetchRequestGet(url: URLClass.photos, method: .GET) { (result: Result<PhotoArray>) in
+            switch result{
+            case .failure(let erro):
+                print(erro)
+            case .success(let sc):
+                for i in sc{
+                    if i.albumID == self.selectedId{
+                        self.photoArray.append(i)
+                        self.albumDetailsCollectionView.reloadData()
+                    }
+                }
             }
-            self.albumDetailsCollectionView.reloadData()
         }
     }
     
@@ -44,24 +57,13 @@ class AlbumDetailsVC: UIViewController{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItemAt(indexPath: indexPath)
-        performSegue(withIdentifier: "toPictureDetailsVC", sender: nil)
-    }
-}
-
-extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    fileprivate func itemsInCell(cell: PhotosCell, indexPath: IndexPath) {
-        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
-        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
-    }
-    
-    fileprivate func selectedItemAt(indexPath : IndexPath) {
-        Photos.selectedPhotoUrl = photoArray[indexPath.row].photoUrl
-        Photos.selectedPhotoname = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "selectedPicture") as! PictureDetailsVC
+        secondViewController.selectedPhoto = photoArray[indexPath.row]
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     @objc func goBack(){
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     fileprivate func backButtonAdded() {

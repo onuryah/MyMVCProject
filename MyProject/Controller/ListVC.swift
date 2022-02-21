@@ -20,13 +20,18 @@ class ListVC: UIViewController{
     }
     
     fileprivate func fetchData(){
-        FetchAlbum().getData { album in
-            if album != nil {
-                self.albumArray = album!
-            }else{
-                self.makeAlert()
+        NetworkManager.fetchRequestGet(url: URLClass.albums, method: .GET) { (result: Result<AlbumArray>) in
+            DispatchQueue.main.async {
+                
+            
+            switch result {
+            case .success(let u):
+                self.albumArray = u
+                self.albumNamesTableView.reloadData()
+            case .failure(let error):
+                print("kontrol1: \(error)")
             }
-            self.albumNamesTableView.reloadData()
+            }
         }
     }
     
@@ -41,8 +46,9 @@ class ListVC: UIViewController{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Albums.selectedId = albumArray[indexPath.row].id
-        performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "toAlbumDetailsVC") as! AlbumDetailsVC
+        secondViewController.selectedId = albumArray[indexPath.row].id
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
 }
 extension ListVC: UITableViewDelegate, UITableViewDataSource{

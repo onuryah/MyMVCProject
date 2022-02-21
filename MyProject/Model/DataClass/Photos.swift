@@ -7,11 +7,19 @@
 
 import Foundation
 
-struct Photos {
-    let title : String
-    let albumId : Int
-    let photoUrl : String
-    let thumbnailUrl : String
-    static var selectedPhotoUrl = String()
-    static var selectedPhotoname = String()
+struct Photo: Codable {
+    let id: Int
+    let title: String
+    let albumID: Int
+    let url, thumbnailURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, title
+        case albumID = "albumId"
+        case url
+        case thumbnailURL = "thumbnailUrl"
+    }
 }
+
+
+typealias PhotoArray = [Photo]

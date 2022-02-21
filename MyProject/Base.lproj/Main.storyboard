@@ -33,7 +33,6 @@
                     <navigationItem key="navigationItem" title="Albums" id="hBP-Xa-Yj6"/>
                     <connections>
                         <outlet property="albumNamesTableView" destination="fgG-gn-us8" id="RHf-FN-WPN"/>
-                        <segue destination="Hus-dI-RRP" kind="presentation" identifier="toAlbumDetailsVC" modalPresentationStyle="fullScreen" id="Ru8-kS-Lbl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -43,13 +42,13 @@
         <!--Photos-->
         <scene sceneID="2fV-Vy-1Sc">
             <objects>
-                <viewController id="xRL-9G-Kx7" customClass="AlbumDetailsVC" customModule="MyProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toAlbumDetailsVC" id="xRL-9G-Kx7" customClass="AlbumDetailsVC" customModule="MyProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSH-jU-Xbz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N6k-nN-wtY">
-                                <rect key="frame" x="0.0" y="74" width="414" height="788"/>
+                                <rect key="frame" x="0.0" y="30" width="414" height="832"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uZE-PK-j8g">
                                     <size key="itemSize" width="202" height="221"/>
@@ -77,12 +76,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kf2-Xt-QZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3202.898550724638" y="57.589285714285708"/>
+            <point key="canvasLocation" x="2451" y="58"/>
         </scene>
         <!--Selected Photo-->
         <scene sceneID="Rfd-5R-U2x">
             <objects>
-                <viewController id="ELo-Z0-97F" customClass="PictureDetailsVC" customModule="MyProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectedPicture" id="ELo-Z0-97F" customClass="PictureDetailsVC" customModule="MyProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WMy-nH-UW0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaT-ob-zQp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5417.3913043478269" y="57.589285714285708"/>
+            <point key="canvasLocation" x="4783" y="58"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ogc-5E-4z1">
@@ -145,26 +144,9 @@
             <point key="canvasLocation" x="-355.07246376811599" y="57.589285714285708"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="klW-a2-jUU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hus-dI-RRP" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vV7-ka-5iV">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xRL-9G-Kx7" kind="relationship" relationship="rootViewController" id="haQ-jB-Cyr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QIG-Fi-Nhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2292.753623188406" y="57.589285714285708"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="i1Q-Hv-Po0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TiW-Tv-Km5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2g2-7y-Ckv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GYT-A9-EQE">
@@ -176,9 +158,8 @@
                         <segue destination="ELo-Z0-97F" kind="relationship" relationship="rootViewController" id="7yo-Pv-0SW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TiW-Tv-Km5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4357" y="58"/>
+            <point key="canvasLocation" x="3604" y="58"/>
         </scene>
     </scenes>
     <resources>

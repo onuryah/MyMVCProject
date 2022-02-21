@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4A10699427427566007D5541 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699327427566007D5541 /* URLs.swift */; };
 		4A10699727427E42007D5541 /* FetchDataForAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699627427E42007D5541 /* FetchDataForAlbum.swift */; };
-		4A10699927427E5F007D5541 /* FetchDataForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10699827427E5F007D5541 /* FetchDataForPhoto.swift */; };
 		4A34EB542758132D0055EE50 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34EB522758132D0055EE50 /* ListCell.swift */; };
 		4A34EB552758132D0055EE50 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A34EB532758132D0055EE50 /* ListCell.xib */; };
 		4A4FCBE42744069600117705 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4FCBE22744069600117705 /* PhotosCell.swift */; };
@@ -33,7 +32,6 @@
 		10A0277157EDF0465DF674E9 /* Pods-MyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyProject.release.xcconfig"; path = "Target Support Files/Pods-MyProject/Pods-MyProject.release.xcconfig"; sourceTree = "<group>"; };
 		4A10699327427566007D5541 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		4A10699627427E42007D5541 /* FetchDataForAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataForAlbum.swift; sourceTree = "<group>"; };
-		4A10699827427E5F007D5541 /* FetchDataForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataForPhoto.swift; sourceTree = "<group>"; };
 		4A34EB522758132D0055EE50 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		4A34EB532758132D0055EE50 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		4A4FCBE22744069600117705 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 		4A10699527427DF8007D5541 /* FetchingData */ = {
 			isa = PBXGroup;
 			children = (
-				4A10699827427E5F007D5541 /* FetchDataForPhoto.swift */,
 				4A10699627427E42007D5541 /* FetchDataForAlbum.swift */,
 			);
 			path = FetchingData;
@@ -331,7 +328,6 @@
 				4A78496727394D800017ACBF /* AlbumDetailsVC.swift in Sources */,
 				4A34EB542758132D0055EE50 /* ListCell.swift in Sources */,
 				4A78496927394D9C0017ACBF /* PictureDetailsVC.swift in Sources */,
-				4A10699927427E5F007D5541 /* FetchDataForPhoto.swift in Sources */,
 				4AB17ECD273AB2BF007E6F9F /* Photos.swift in Sources */,
 				4A10699427427566007D5541 /* URLs.swift in Sources */,
 				4A4FCBE42744069600117705 /* PhotosCell.swift in Sources */,

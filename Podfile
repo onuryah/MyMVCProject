@@ -6,7 +6,7 @@ target 'MyProject' do
   use_frameworks!
 
 pod 'SDWebImage'
-
+pod 'Bagel', '~>  1.3.2'
 
   # Pods for MyProject
 

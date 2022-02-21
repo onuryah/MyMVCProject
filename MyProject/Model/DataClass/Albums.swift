@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Albums {
+struct Albums: Decodable, Encodable {
  
     let id : Int
     let title  : String
     static var selectedId = Int()
 }
+typealias AlbumArray = [Albums]

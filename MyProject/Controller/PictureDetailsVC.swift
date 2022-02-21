@@ -11,6 +11,7 @@ import SDWebImage
 class PictureDetailsVC: UIViewController {
     @IBOutlet private weak var resultImageView: UIImageView!
     @IBOutlet private weak var resultNameLabel: UILabel!
+    var selectedPhoto : Photo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,13 @@ class PictureDetailsVC: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Photos", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
     }
     @objc func goBack(){
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     func fixImageViewAndLabelField() {
         resultNameLabel.lineBreakMode = .byWordWrapping
         resultNameLabel.numberOfLines = 0
         resultImageView.layer.cornerRadius = 50
-        resultImageView.sd_setImage(with: URL(string: Photos.selectedPhotoUrl))
-        resultNameLabel.text = Photos.selectedPhotoname
+        resultImageView.sd_setImage(with: URL(string: selectedPhoto!.url))
+        resultNameLabel.text = selectedPhoto?.title
     }
 }

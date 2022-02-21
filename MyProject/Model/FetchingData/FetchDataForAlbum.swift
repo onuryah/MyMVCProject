@@ -8,32 +8,6 @@
 import Foundation
 import UIKit
 
-class FetchAlbum {
-    private var albumArray = [Albums]()
-    
-    public func getData(completion : @escaping([Albums]?) -> ()) {
-        guard let url = URL(string: URLClass.albums)else{return}
-        URLSession.shared.dataTask(with: url) { data, response, error in
-                DispatchQueue.main.async {
-                if error != nil {
-                    completion(nil)
-                }else if data != nil {
-                        if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String : Any]]{
-                            for data in json {
-                                if let titleToList = data["title"] as? String{
-                                    if let idToList = data["id"] as? Int{
-                                        let albumsId = Albums(id: idToList, title: titleToList)
-                                        self.albumArray.append(albumsId)
-                                        completion(self.albumArray)
-                                }
-                            }
-                        }
-                    }
-                }
-           }
-        }.resume()
-    }
-}
 final class NetworkManager: NSObject {
     
     enum failEnum: Error {
@@ -45,7 +19,7 @@ final class NetworkManager: NSObject {
         case GET
     }
     
-    static func fetchRequest<T>(url: String, method: HttpMethods ,model: T, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionTask where T: Codable {
+    static func fetchRequestPost<Body, Response>(url: String, method: HttpMethods ,model: Body, completion: @escaping (Result<Response>) -> Void) where Body: Codable, Response: Codable {
         let stornUrl = URL(string: url)!
         var request = URLRequest(url: stornUrl)
         request.timeoutInterval = 300
@@ -57,16 +31,42 @@ final class NetworkManager: NSObject {
             if let data = data {
                 let decoder = JSONDecoder()
                 do {
-                    let result = try decoder.decode(T.self, from: data)
+                    let result = try decoder.decode(Response.self, from: data)
                     completion(.success(result))
-                } catch {
+                } catch{
                     completion(.failure(failEnum.serilizationError))
                 }
-              
             }
         }
         task.resume()
-        return task
     }
     
+    static func fetchRequestGet<Response>(url: String,method: HttpMethods, completion: @escaping (Result<Response>) -> Void) where Response: Codable {
+        let stornUrl = URL(string: url)!
+        var request = URLRequest(url: stornUrl)
+        request.timeoutInterval = 250
+        request.httpMethod = method.rawValue
+        let task =  URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(.failure(error))
+                }
+                if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let result = try decoder.decode(Response.self, from: data)
+                        completion(.success(result))
+                    } catch {
+                        completion(.failure(failEnum.serilizationError))
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+}
+
+enum Result<U> {
+    case success(U)
+    case failure(Error)
 }
